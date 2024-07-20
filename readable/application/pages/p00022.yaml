@@ -1,0 +1,1525 @@
+---
+# ====== Page: ISSUE ITEM FORM ===============================
+id: 22
+identification: 
+  name: ISSUE ITEM FORM
+  alias: ISSUE-ITEM-FORM
+  title: ISSUE ITEM FORM
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: ISSUE ITEM FORM =============================
+  id: 118183627718365293400
+  identification: 
+    name: ISSUE ITEM FORM
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: ISSUE_ITEMS
+    include-rowid-column: false
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--accent13
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+page-items: 
+- # ====== Page Item: P22_ITEM_CODE_STOCK ======================
+  id: 115386602614459129347
+  identification: 
+    name: P22_ITEM_CODE_STOCK
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 180
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_ITEM_CODE ============================
+  id: 118183628069244293400
+  identification: 
+    name: P22_ITEM_CODE
+    type: Text Field
+
+  label: 
+    label: Item Code
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    css-classes: 
+    - apex_disabled
+    custom-attributes: 
+    - readonly
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: ITEM_CODE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: true
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_ITEM_NAME ============================
+  id: 118183628489638293401
+  identification: 
+    name: P22_ITEM_NAME
+    type: Popup LOV
+
+  label: 
+    label: Item Name
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    search-as-you-type: false
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 20
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 50
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      SELECT DISTINCT ITEM_NAME AS DISPLAY_VALUE, ITEM_NAME AS RETURN_VALUE
+      FROM IT_ITEMS
+      ORDER BY ITEM_NAME
+      
+    display-extra-values: true
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: ITEM_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_MAKE =================================
+  id: 118183628843436293401
+  identification: 
+    name: P22_MAKE
+    type: Text Field
+
+  label: 
+    label: Make
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 30
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 50
+
+  advanced: 
+    css-classes: 
+    - apex_disabled
+    custom-attributes: 
+    - readonly
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: MAKE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_MODEL ================================
+  id: 118183629203079293402
+  identification: 
+    name: P22_MODEL
+    type: Popup LOV
+
+  label: 
+    label: Model
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    search-as-you-type: false
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 40
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      SELECT MODEL AS DISPLAY_VALUE, MODEL AS RETURN_VALUE
+      FROM IT_ITEMS
+      WHERE ITEM_NAME = :P22_ITEM_NAME
+      ORDER BY MODEL
+      
+    display-extra-values: true
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P22_ITEM_NAME
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: MODEL
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_CATEGORY =============================
+  id: 118183629684857293402
+  identification: 
+    name: P22_CATEGORY
+    type: Text Field
+
+  label: 
+    label: Category
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 30
+
+  advanced: 
+    css-classes: 
+    - apex_disabled
+    custom-attributes: 
+    - readonly
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: CATEGORY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_UOM ==================================
+  id: 118183630031078293402
+  identification: 
+    name: P22_UOM
+    type: Text Field
+
+  label: 
+    label: Uom
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 60
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 50
+
+  advanced: 
+    css-classes: 
+    - apex_disabled
+    custom-attributes: 
+    - readonly
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: UOM
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_ISSUE_QTY ============================
+  id: 118183630484896293403
+  identification: 
+    name: P22_ISSUE_QTY
+    type: Number Field
+
+  label: 
+    label: Issue Qty
+    alignment: Left
+
+  settings: 
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 80
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: ISSUE_QTY
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_ISSUE_DT =============================
+  id: 118183630820246293403
+  identification: 
+    name: P22_ISSUE_DT
+    type: Date Picker
+
+  label: 
+    label: Issue Dt
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 100
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: ISSUE_DT
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_USERID ===============================
+  id: 118183631227771293403
+  identification: 
+    name: P22_USERID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 110
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: USERID
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_USERNAME =============================
+  id: 118183631642537293403
+  identification: 
+    name: P22_USERNAME
+    type: Display Only
+
+  label: 
+    label: Username
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 120
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: USERNAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: '&APP_USER.'
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_CUST_CODE ============================
+  id: 118183632091969293404
+  identification: 
+    name: P22_CUST_CODE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 130
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: CUST_CODE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_CUST_NAME ============================
+  id: 118183632465733293404
+  identification: 
+    name: P22_CUST_NAME
+    type: Text Field
+
+  label: 
+    label: Cust Name
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 140
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 30
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: CUST_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_CUST_DEPT_CODE =======================
+  id: 118183632809555293404
+  identification: 
+    name: P22_CUST_DEPT_CODE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 150
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: CUST_DEPT_CODE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_CUST_DEPT_NAME =======================
+  id: 118183633239953293404
+  identification: 
+    name: P22_CUST_DEPT_NAME
+    type: Select List
+
+  label: 
+    label: Cust Dept Name
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 160
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC:ACCOUNTS;ACCOUNTS,CCR;CCR,PRODUCTION;PRODUCTION,PURCHASE;PURCHASE,HUMAN RESOURCE;HUMAN RESOURCE,IT DEPARTMENT;IT DEPARTMENT,CIVIL;CIVIL,RESEARCH & DEVELOPMENT;RESEARCH & DEVELOPMENT,ENVIRONMENT;ENVIRONMENT,SECURITY;SECURITY,ELECTRICAL;ELECTRICAL,LABRATORY;LABRATORY,REFINE INSTRUMENT;REFINE INSTRUMENT,STORE;STORE,MECHANICAL MAINTANENCE;MECHANICAL MAINTANENCE,GARAGE;GARAGE,FABRICATION;FABRICATION,CGPP OFFICE;CGPP OFFICE,CGPP CONTROL ROOM;CGPP CONTROL ROOM,SILLO;SILLO,CFBC;CFBC,CMS GATE;CMS GATE,MAIN GATE;MAIN GATE,CGP GATE;CGP GATE,LOGISTIC;LOGISTIC,MEDICAL;MEDICAL,CLUB;CLUB,CGPP INSTRUMENT;CGPP INSTRUMENT'
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: CUST_DEPT_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_REMARKS ==============================
+  id: 118183633650559293405
+  identification: 
+    name: P22_REMARKS
+    type: Text Field
+
+  label: 
+    label: Remarks
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 170
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 250
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+    column: REMARKS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_ONHAND_STOCK =========================
+  id: 118354592101597177406
+  identification: 
+    name: P22_ONHAND_STOCK
+    type: Text Field
+
+  label: 
+    label: ONHAND_STOCK
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 70
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    css-classes: 
+    - apex_disabled
+    custom-attributes: 
+    - readonly
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P22_DISPLAY_ONHAND_STOCK =================
+  id: 118354592598338177410
+  identification: 
+    name: P22_DISPLAY_ONHAND_STOCK
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 90
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Item
+    item: P22_ONHAND_STOCK
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 118183638556432293408
+  identification: 
+    button-name: CANCEL
+    label: Cancel
+
+  layout: 
+    sequence: 10
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+      page: 1 # Home
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: DELETE ======================================
+  id: 118183639159050293408
+  identification: 
+    button-name: DELETE
+    label: Delete
+
+  layout: 
+    sequence: 20
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P22_ITEM_CODE
+
+- # ====== Button: SAVE ========================================
+  id: 118183639574271293408
+  identification: 
+    button-name: SAVE
+    label: Apply Changes
+
+  layout: 
+    sequence: 30
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: CHANGE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P22_ITEM_CODE
+
+- # ====== Button: CREATE ======================================
+  id: 118183639965918293409
+  identification: 
+    button-name: CREATE
+    label: Create
+
+  layout: 
+    sequence: 40
+    region: ISSUE ITEM FORM # 118183627718365293400
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P22_ITEM_CODE
+
+dynamic-actions: 
+- # ====== Dynamic Action: Check Stock Before Issue ============
+  id: 118354592827011177413
+  identification: 
+    name: Check Stock Before Issue
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P22_ISSUE_QTY
+
+  actions: 
+  - # ====== Action: Check Stock Before Issue ====================
+    id: 118354592966692177414
+    identification: 
+      name: Check Stock Before Issue
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var issueQty = $v('P22_ISSUE_QTY');
+        var onhandStock = $v('P22_ONHAND_STOCK');
+        
+        if (parseInt(issueQty) > parseInt(onhandStock)) {
+            apex.message.alert('The available stock is ' + onhandStock + '. You cannot issue more than the available stock.');
+            $s('P22_ISSUE_QTY', '');
+        } else if (parseInt(issueQty) <= 0) {
+            apex.message.alert('The issue quantity cannot be zero or negative.');
+            $s('P22_ISSUE_QTY', '');
+        }
+        
+
+    execution: 
+      sequence: 10
+      event: Check Stock Before Issue # 118354592827011177413
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: New =================================
+  id: 118354593064568177415
+  identification: 
+    name: New
+
+  execution: 
+    sequence: 40
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P22_MODEL
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 118354593195885177416
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: SQL Statement
+      sql-statement: |
+        SELECT ITEM_CODE, MAKE, CATEGORY, UOM
+                FROM IT_ITEMS
+                WHERE ITEM_NAME = :P22_ITEM_NAME
+                  AND MODEL = :P22_MODEL;
+      items-to-submit: 
+      - P22_ITEM_NAME
+      - P22_MODEL
+      escape-special-characters: false
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P22_ITEM_CODE
+      - P22_MAKE
+      - P22_CATEGORY
+      - P22_UOM
+
+    execution: 
+      sequence: 10
+      event: New # 118354593064568177415
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: New_1 ===============================
+  id: 118354593826001177423
+  identification: 
+    name: New_1
+
+  execution: 
+    sequence: 50
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P22_ITEM_CODE
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 118354593924880177424
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: PL/SQL Function Body
+      pl/sql-function-body: |
+        DECLARE
+          v_onhand_stock NUMBER;
+        BEGIN
+          BEGIN
+            v_onhand_stock := get_onhand_stock(:P22_ITEM_CODE);
+          EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+              v_onhand_stock := 0;
+          END;
+        
+          :P22_ONHAND_STOCK := v_onhand_stock;
+          RETURN v_onhand_stock;
+        END;
+        
+      items-to-submit: 
+      - P22_ITEM_CODE
+      escape-special-characters: true
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P22_ONHAND_STOCK
+
+    execution: 
+      sequence: 10
+      event: New_1 # 118354593826001177423
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: Date change =========================
+  id: 124325214176573837920
+  identification: 
+    name: Date change
+
+  execution: 
+    sequence: 60
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P22_ISSUE_DT
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 124325214274969837921
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var issueDate = new Date($v("P22_ISSUE_DT"));
+        var today = new Date();
+        today.setHours(0, 0, 0, 0); // Remove time part
+        
+        if (issueDate < today) {
+            alert("The issue date cannot be a past date.");
+            $s("P22_ISSUE_DT", apex.util.date.format(today, 'YYYY-MM-DD'));
+        }
+        
+
+    execution: 
+      sequence: 10
+      event: Date change # 124325214176573837920
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+validations: 
+- # ====== Validation: Check Available Stock ===================
+  id: 115386602784443129348
+  identification: 
+    name: Check Available Stock
+
+  execution: 
+    sequence: 10
+
+  validation: 
+    type: Function Body (returning Boolean)
+    language: PL/SQL
+    pl/sql-function-body: |
+      DECLARE
+          v_stock NUMBER;
+      BEGIN
+          -- Get the available stock from the hidden item
+          v_stock := :P22_ONHAND_STOCK;
+          
+          -- Check if the issue quantity exceeds the available stock
+          IF :P22_ISSUE_QTY > v_stock THEN
+              RETURN FALSE;
+          ELSE
+              RETURN TRUE;
+          END IF;
+      END;
+    always-execute: false
+
+  error: 
+    error-message: |
+      The quantity to be issued exceeds the available stock. Available stock is: &P22_ONHAND_STOCK.
+      
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: CREATE # 118183639965918293409
+
+processes: 
+- # ====== Process: fetch available stock ======================
+  id: 115386602549128129346
+  identification: 
+    name: fetch available stock
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          v_stock IT_ITEMS.STOCK%TYPE;
+      BEGIN
+          -- Fetch the available stock for the selected item
+          SELECT STOCK
+          INTO v_stock
+          FROM IT_ITEMS
+          WHERE ITEM_CODE = :P22_ITEM_CODE;
+          
+          -- Store the stock value in the hidden page item
+          :P22_ITEM_CODE_STOCK := v_stock;
+      EXCEPTION
+          WHEN NO_DATA_FOUND THEN
+              -- Handle the case where no matching item is found
+              :P22_ITEM_CODE_STOCK := NULL;
+      END;
+      
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Initialize form ISSUE ITEM FORM ============
+  id: 118183640765262293409
+  identification: 
+    name: Initialize form ISSUE ITEM FORM
+    type: Form - Initialization
+    execution-chain: None
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form ISSUE ITEM FORM ===============
+  id: 118183641125769293410
+  identification: 
+    name: Process form ISSUE ITEM FORM
+    type: Form - Automatic Row Processing (DML)
+    execution-chain: None
+    form-region: ISSUE ITEM FORM # 118183627718365293400
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+branches: 
+- # ====== Branch: Go To Page 20 ===============================
+  id: 118183640239749293409
+  identification: 
+    name: Go To Page 20
+
+  execution: 
+    sequence: 1
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:20:&APP_SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 20 # DAILY ISSUE ITEM REPORT
+

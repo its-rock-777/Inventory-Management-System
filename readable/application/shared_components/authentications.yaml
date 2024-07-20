@@ -1,0 +1,66 @@
+---
+- # ====== Authentication: Oracle APEX Accounts ================
+  id: 113628966926434746528
+  identification: 
+    name: Oracle APEX Accounts
+
+  subscription: 
+    version-number: 1
+
+  settings: 
+    type: Oracle APEX Accounts
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: INVENTORY_SECURITY ==================
+  id: 114562483745318992983
+  identification: 
+    name: INVENTORY_SECURITY
+
+  subscription: 
+    version-number: 1
+
+  settings: 
+    type: Custom
+    authentication-function-name: user_aut
+    enable-legacy-authentication-attributes: false
+
+  source: 
+    pl/sql-code: |
+      FUNCTION user_aut    (
+          
+       p_username IN VARCHAR2, 
+       p_password VARCHAR2    
+      )
+       RETURN BOOLEAN
+      AS
+       lc_pwd_exit VARCHAR2 (1);
+      BEGIN
+       SELECT 'Y'
+       INTO lc_pwd_exit
+       FROM MY_USERS
+       WHERE upper(LOG_IN) = UPPER (p_username) AND LOG_PASS = p_password and status='Y' 
+      ;
+      RETURN TRUE;
+      EXCEPTION
+       WHEN NO_DATA_FOUND
+       THEN
+       RETURN FALSE;
+      END user_aut;
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
